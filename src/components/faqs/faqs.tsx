@@ -50,32 +50,31 @@ export function FAQs() {
       </div>
       <Accordion type="single" collapsible defaultValue="branding" className="grid w-full gap-4">
         <AccordionItemFAQs value="branding">
-          <AccordionTriggerFAQs>Will my app show your branding anywhere?</AccordionTriggerFAQs>
+          <AccordionTriggerFAQs>What is Sakura?</AccordionTriggerFAQs>
           <AccordionContentFAQs>
             <p>
-              Never. Your app will be fully white-labeled with your own name, logo, and design. We stay completely
-              invisible.
+              Sakura is an app that can connect your business apps ( e.g Whatsapp ) and automatically answer customer DMs using AI.
             </p>
           </AccordionContentFAQs>
         </AccordionItemFAQs>
         <AccordionItemFAQs value="skills">
-          <AccordionTriggerFAQs>Do I need technical skills to use Acme?</AccordionTriggerFAQs>
+          <AccordionTriggerFAQs>Is Sakura a mobile app or web app?</AccordionTriggerFAQs>
           <AccordionContentFAQs>
             <p>
-              No. We handle all the technical setup for you. You can focus on your business while we handle the rest.
+              Currently Sakura is a web app but can be used on mobile phones. Mobile app is in development and will be available soon.
             </p>
           </AccordionContentFAQs>
         </AccordionItemFAQs>
         <AccordionItemFAQs value="devices">
-          <AccordionTriggerFAQs>Will my app work on all devices?</AccordionTriggerFAQs>
+          <AccordionTriggerFAQs>What is AI?</AccordionTriggerFAQs>
           <AccordionContentFAQs>
-            <p>Yes. Our app is designed to work on all devices, including iOS and Android.</p>
+            <p>In simple terms, AI is technology that helps apps do smart things automatically, like answering customer questions without a human.</p>
           </AccordionContentFAQs>
         </AccordionItemFAQs>
         <AccordionItemFAQs value="notifcations">
-          <AccordionTriggerFAQs>Can I send notifications and updates to users?</AccordionTriggerFAQs>
+          <AccordionTriggerFAQs>What is the difference between ChatGPT and Sakura</AccordionTriggerFAQs>
           <AccordionContentFAQs>
-            <p>Yes. You can send notifications and updates to users through our app.</p>
+            <p>ChatGPT is an app that can only answer questions you ask it. But Sakura can connect with your other apps like Whatsapp, Instagram, Shopify etc. and automatically answer customer DMs using AI.</p>
           </AccordionContentFAQs>
         </AccordionItemFAQs>
       </Accordion>

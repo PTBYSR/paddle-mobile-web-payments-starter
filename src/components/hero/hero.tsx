@@ -23,10 +23,10 @@ export function Hero() {
           </p>
         </Pill>
         <h1 className="text-center text-4xl leading-[1.1] font-medium tracking-tight sm:text-7xl">
-          Meet the App<span className="text-muted-foreground block">That Does It All.</span>
+          Let AI handle your<span className="text-muted-foreground block">Customer support for you.</span>
         </h1>
         <p className="max-w-lg text-center leading-6 tracking-tight sm:text-xl">
-          Powerful, intuitive, and ready to make your life easier, start using Acme App today.
+          Sakura connects with all the apps you already use and automatically handles and solves customer queries on your behalf.
         </p>
         <Button className="mb-10 w-fit" size="lg" asChild>
           <Link href="/pricing">Get Started</Link>

@@ -13,26 +13,26 @@ export type Feature = {
 const features = [
   {
     icon: <SlidersIcon size={20} />,
-    title: "Full Brand Control",
-    description: "Make it yours—customize logos, colors, domains, and more.",
+    title: "Connect all your apps",
+    description: "Connect with all your apps like Whatsapp or Instagram so that Sakura can see your customer DMs and help you reply to them automatically.",
     image: "/app-image-1.png",
   },
   {
     icon: <ZapIcon size={20} />,
-    title: "Fast, Native Performance",
-    description: "Built with native tech for fast, smooth performance.",
+    title: "Connect with your Business tools",
+    description: "Connect with your business tools like Shopify, Excel, Paystack so that Sakura can know your business details",
     image: "/app-image-1.png",
   },
   {
     icon: <ActivityIcon size={20} />,
-    title: "Push Notifications",
-    description: "Engage users with real-time updates and alerts.",
+    title: "Train your AI",
+    description: "Train the AI on the app, very easily, to respond based on your business details",
     image: "/app-image-1.png",
   },
   {
     icon: <ChartNoAxesColumnIcon size={20} />,
-    title: "Built-in Analytics",
-    description: "Monitor activity and performance with live data.",
+    title: "Monitor the performance of your AI",
+    description: "Monitor activity and performance of your AI",
     image: "/app-image-1.png",
   },
 ] satisfies Feature[];
@@ -44,11 +44,10 @@ export function Features() {
         Features
       </Badge>
       <h2 className="text-center text-3xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
-        Discover our<div className="text-muted-foreground">exceptional features</div>
+        Discover our<div className="text-muted-foreground">app features</div>
       </h2>
       <p className="mb-3 max-w-lg text-center leading-6 tracking-tight sm:text-xl lg:mb-8">
-        We&apos;ve built the ultimate white-label app platform so you can focus on growing your brand - not building
-        tech
+        Discover the features of our app that allows you to completely handle your customers automatically with ease.
       </p>
       <FeaturesCarousel features={features} className="block lg:hidden" />
       <FeaturesTabs features={features} className="hidden lg:block" />
