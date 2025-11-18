@@ -10,8 +10,10 @@ export function MusicPlayer() {
   const [isMounted, setIsMounted] = useState(false);
   const [volume, setVolume] = useState(50);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Update volume when it changes
   useEffect(() => {
@@ -19,6 +21,24 @@ export function MusicPlayer() {
       audioRef.current.volume = volume / 100;
     }
   }, [volume]);
+
+  // Show tooltip after 2 seconds of component mount
+  useEffect(() => {
+    tooltipTimeoutRef.current = setTimeout(() => {
+      setShowTooltip(true);
+      
+      // Auto-hide tooltip after 5 seconds
+      tooltipTimeoutRef.current = setTimeout(() => {
+        setShowTooltip(false);
+      }, 5000);
+    }, 2000);
+    
+    return () => {
+      if (tooltipTimeoutRef.current) {
+        clearTimeout(tooltipTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Initialize audio when component mounts
   useEffect(() => {
@@ -43,6 +63,9 @@ export function MusicPlayer() {
       }
       if (volumeTimeoutRef.current) {
         clearTimeout(volumeTimeoutRef.current);
+      }
+      if (tooltipTimeoutRef.current) {
+        clearTimeout(tooltipTimeoutRef.current);
       }
     };
   }, []);
@@ -101,10 +124,15 @@ export function MusicPlayer() {
 
   return (
     <div 
-      className="fixed bottom-6 right-6 z-50 flex items-end gap-2"
+      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {showTooltip && (
+        <div className="bg-blue-500 text-white text-sm px-3 py-1.5 rounded-full mb-2 animate-bounce">
+          Play me!
+        </div>
+      )}
       {showVolumeSlider && (
         <div className="mb-2 flex h-12 w-32 items-center justify-center rounded-lg bg-background/90 px-3 shadow-lg backdrop-blur-sm">
           <Slider
