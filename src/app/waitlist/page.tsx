@@ -74,7 +74,7 @@ export default function WaitlistPage() {
             {isSuccess ? (
               <div className="text-center py-8">
                 <h3 className="text-xl font-medium mb-2">Thank you!</h3>
-                <p className="text-muted-foreground">You've been added to our waitlist. We'll be in touch soon!</p>
+                <p className="text-muted-foreground">You&apos;ve been added to our waitlist. We&apos;ll be in touch soon!</p>
                 <Button 
                   onClick={() => setIsSuccess(false)}
                   className="mt-6 w-full"
