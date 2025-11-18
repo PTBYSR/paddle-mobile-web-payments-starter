@@ -15,19 +15,19 @@ const features = [
     icon: <SlidersIcon size={20} />,
     title: "Connect all your apps",
     description: "Connect with all your apps like Whatsapp or Instagram so that Sakura can see your customer DMs and help you reply to them automatically.",
-    image: "/app-image-1.png",
+    image: "/app-image-connect.png",
   },
   {
     icon: <ZapIcon size={20} />,
     title: "Connect with your Business tools",
     description: "Connect with your business tools like Shopify, Excel, Paystack so that Sakura can know your business details",
-    image: "/app-image-1.png",
+    image: "/app-image-connect.png",
   },
   {
     icon: <ActivityIcon size={20} />,
     title: "Train your AI",
     description: "Train the AI on the app, very easily, to respond based on your business details",
-    image: "/app-image-1.png",
+    image: "/app-image-settings.png",
   },
   {
     icon: <ChartNoAxesColumnIcon size={20} />,

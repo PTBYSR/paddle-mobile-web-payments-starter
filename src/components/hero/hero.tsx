@@ -30,7 +30,7 @@ export function Hero() {
             <PillAvatar src="/avatars/4.jpg" />
           </PillAvatarGroup>
           <p className="text-muted-foreground px-2 text-xs font-medium sm:border-l-1 sm:text-sm">
-            Join <span className="text-foreground">3 Million</span> other users already on board
+            Join <span className="text-foreground">businesses</span> already on board
           </p>
         </Pill>
         <h1 className="text-center text-4xl leading-[1.1] font-medium tracking-tight sm:text-7xl">

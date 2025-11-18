@@ -46,7 +46,7 @@ export default function WaitlistPage() {
       <div className="absolute inset-0 bg-black/90 -z-10"></div>
       <div className="relative z-10">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 py-20 md:grid-cols-2 md:gap-14 md:px-10">
-          <div className="flex w-full flex-col gap-6">
+          <div className="flex w-full flex-col gap-6 h-full">
             <Badge variant="secondary" className="mb-2 w-fit uppercase">
               Join Waitlist
             </Badge>
@@ -57,9 +57,15 @@ export default function WaitlistPage() {
             <p className="max-w-lg ">
               Be among the first to experience our AI-powered customer support solution. Join our waitlist today and we'll notify you when we launch.
             </p>
-            <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 w-fit">
-              ← Back to home
-            </Link>
+            <div className="mt-auto">
+              <Link href="/" className="inline-flex items-center gap-1.5 bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-blue-600 transition-colors w-fit">
+                <span>Back to home</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right">
+                  <path d="M5 12h14"/>
+                  <path d="m12 5 7 7-7 7"/>
+                </svg>
+              </Link>
+            </div>
           </div>
 
           <div className={cn(
@@ -136,7 +142,7 @@ export default function WaitlistPage() {
                   {isSubmitting ? 'Submitting...' : 'Join Waitlist'}
                 </Button>
             
-                <p className="text-xs text-muted-foreground text-center">
+                <p className="text-xs text-white text-center">
                   We respect your privacy. Your information will only be used to notify you about our launch.
                 </p>
               </form>

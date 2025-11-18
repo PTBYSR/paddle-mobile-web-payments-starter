@@ -5,6 +5,7 @@ import { FeatureCard } from "@/components/features/feature-card";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
 
 type Props = {
   features: Feature[];
@@ -28,8 +29,14 @@ export function FeaturesCarousel({ features, className }: Props) {
   }, [carouselApi]);
 
   return (
-    <div className={cn("w-[calc(100%+3rem)] md:w-[calc(100%+5rem)]", className)}>
-      <Carousel setApi={setCarouselApi}>
+    <div className={cn("w-[calc(100%+3rem)] md:w-[calc(100%+5rem)] relative", className)}>
+      <div className="flex items-center justify-center mb-3 md:hidden">
+        <div className="bg-blue-500 text-white text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+          <span>Swipe for more</span>
+          <ChevronRight className="h-3.5 w-3.5" />
+        </div>
+      </div>
+      <Carousel setApi={setCarouselApi} className="relative">
         <CarouselContent>
           {features.map((feature, index) => (
             <CarouselItem
