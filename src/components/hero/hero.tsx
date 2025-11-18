@@ -7,9 +7,20 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <div className="z-1 grid w-full place-items-center p-8">
+    <div className="relative z-1 grid w-full place-items-center p-8 overflow-hidden">
+      <div 
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: 'url("/hero-bg.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.1,
+          filter: 'blur(1px)'
+        }}
+      />
       <BackgroundBlur className="-top-40 md:-top-0" />
-      <Nav />
+      <div className="relative z-10 w-full">
+        <Nav />
       <div className="mt-16 flex flex-col items-center gap-6">
         <Pill>
           <PillAvatarGroup className="hidden sm:flex">
@@ -26,12 +37,13 @@ export function Hero() {
           Let AI handle your<span className="text-muted-foreground block">Customer support for you.</span>
         </h1>
         <p className="max-w-lg text-center leading-6 tracking-tight sm:text-xl">
-          Sakura connects with all the apps you already use and automatically handles and solves customer queries on your behalf.
+          Sakura connects to your business apps—like WhatsApp and Instagram—and automatically replies to customer messages based on your own business rules and business guidelines.
         </p>
         <Button className="mb-10 w-fit" size="lg" asChild>
-          <Link href="/pricing">Get Started</Link>
+          <Link href="/waitlist">Get Started</Link>
         </Button>
-        <Image src="/app-image-1.png" alt="Hero" width={304} height={445} />
+        <Image src="/app-image-1.png" alt="Hero" width={304} height={445} className="relative z-10" />
+      </div>
       </div>
     </div>
   );

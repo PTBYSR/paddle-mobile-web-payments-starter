@@ -12,17 +12,17 @@ export type Testimonial = {
 
 const testimonials = [
   {
-    name: "Giana Herwitz",
-    date: "May 4",
-    title: "Title will be here",
-    content: `"Acme helped us launch our mobile app in days—not weeks. The customization options are top-notch."`,
+    name: "Anonymous | Manager at Kitchen Pastries",
+    date: "Nov 18th",
+    title: "efficient and reliable",
+    content: `"Sakura is very efficient and reliable, it makes services feel smoother, faster, and way less stressful for both the business and the customers."`,
     rating: 5,
   },
   {
-    name: "Hanna Gouse",
+    name: "Anonymous | CEO of a Sneaker Retailer",
     date: "May 4",
-    title: "Title will be here",
-    content: `"When I signed up with Acme it was a no-brainer. It's been one of the best decisions I've made to ensure my finances are on point."`,
+    title: "A must-have",
+    content: `"From everything I’ve seen and heard, Sakura looks like a must-have. It honestly seems like one of the best options out there."`,
     rating: 5,
   },
   {
@@ -43,7 +43,10 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-6 py-14 md:py-25">
+    <section id="testimonials" className="relative flex w-full flex-col items-center gap-6 overflow-hidden py-12 md:py-24">
+      <div className="absolute -right-1/2 -top-1/4 -z-10 h-full w-full">
+        <div className="absolute left-1/2 aspect-square w-3/4 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+      </div>
       <Badge variant="secondary" className="mb-2 uppercase">
         Testimonial
       </Badge>
@@ -51,12 +54,12 @@ export function Testimonials() {
         Don&apos;t Take<div className="text-muted-foreground">Our Word for It</div>
       </h2>
       <p className="mb-3 max-w-lg text-center leading-6 tracking-tight sm:text-xl lg:mb-8">
-        We&apos;ve built the ultimate white-label app platform so you can focus on growing your brand—not building tech
+        Sakura is the solution for solo entreprenuers and small businesses to solve customer support. Check out what our customers have to say.
       </p>
       <div className="relative w-[calc(100%+3rem)] overflow-x-hidden py-4 lg:w-full">
         <TestimonialMarquee testimonials={testimonials} className="mb-4" />
         <TestimonialMarquee testimonials={testimonials} reverse />
       </div>
-    </div>
+    </section>
   );
 }
