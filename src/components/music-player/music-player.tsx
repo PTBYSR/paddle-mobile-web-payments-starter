@@ -11,7 +11,7 @@ export function MusicPlayer() {
   const [volume, setVolume] = useState(50);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const volumeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Update volume when it changes
   useEffect(() => {
@@ -91,6 +91,9 @@ export function MusicPlayer() {
   };
 
   const handleMouseLeave = () => {
+    if (volumeTimeoutRef.current) {
+      clearTimeout(volumeTimeoutRef.current);
+    }
     volumeTimeoutRef.current = setTimeout(() => {
       setShowVolumeSlider(false);
     }, 1000);
