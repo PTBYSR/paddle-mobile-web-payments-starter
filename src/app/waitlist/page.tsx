@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 export default function WaitlistPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,14 +19,24 @@ export default function WaitlistPage() {
     
     try {
       const formData = new FormData(event.currentTarget);
-      const data = Object.fromEntries(formData.entries());
+      const data = {
+        email: formData.get('email') as string,
+        business_name: formData.get('business_name') as string,
+        needs: formData.get('needs') as string,
+        created_at: new Date().toISOString()
+      };
       
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', data);
+      // Insert data into Supabase
+      const { error } = await supabase
+        .from('waitlist')
+        .insert([data]);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (error) {
+        console.error('Error submitting form:', error);
+        throw error;
+      }
       
+      console.log('Form submitted successfully:', data);
       setIsSuccess(true);
       (event.target as HTMLFormElement).reset();
     } catch (error) {

@@ -6,7 +6,7 @@ export function Quote() {
       <blockquote className="text-3xl leading-[1.1] font-medium tracking-tighter text-balance md:text-5xl md:text-wrap">
         <span>&quot;Since the first day we us</span>
         <span className="text-muted-foreground/50">
-          ed Acme, we knew we&apos;d never go back to spreadsheets again.&quot;
+          ed Sakura, it felt like hiring another hyper-productive customer support employee.
         </span>
       </blockquote>
       <figcaption className="mt-10">
