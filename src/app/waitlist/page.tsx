@@ -61,13 +61,13 @@ export default function WaitlistPage() {
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check">
                 <path d="M20 6 9 17l-5-5" />
               </svg>
-              You're on the list!
+              You&apos;re on the list!
             </div>
             <h1 className="text-4xl font-bold tracking-tight  sm:text-5xl md:text-6xl mb-6">
               Thanks for joining our waitlist! 🎉
             </h1>
             <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-              We'll be in touch soon with more details. In the meantime, follow us on X to stay updated with our progress and get early access to exclusive content.
+              We&apos;ll be in touch soon with more details. In the meantime, follow us on X to stay updated with our progress and get early access to exclusive content.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
