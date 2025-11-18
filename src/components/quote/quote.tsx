@@ -4,9 +4,9 @@ export function Quote() {
   return (
     <figure className="mx-auto flex max-w-3xl flex-col items-center px-4 py-12 text-center">
       <blockquote className="text-3xl leading-[1.1] font-medium tracking-tighter text-balance md:text-5xl md:text-wrap">
-        <span>&quot;Since the first day we us</span>
+        <span>&quot;Since the first day we used Sakura,</span>
         <span className="text-muted-foreground/50">
-          ed Sakura, it felt like hiring another hyper-productive customer support employee.
+           it felt like hiring another hyper-productive customer support employee.
         </span>
       </blockquote>
       <figcaption className="mt-10">
