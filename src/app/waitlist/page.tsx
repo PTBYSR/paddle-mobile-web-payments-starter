@@ -1,46 +1,54 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 
 export default function WaitlistPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!isMounted) return;
+    
     setIsSubmitting(true);
     
     try {
       const formData = new FormData(event.currentTarget);
-      const data = {
-        email: formData.get('email') as string,
-        business_name: formData.get('business_name') as string,
-        needs: formData.get('needs') as string,
-        created_at: new Date().toISOString()
-      };
-      
-      // Insert data into Supabase
+      const email = formData.get('email') as string;
+      const businessName = formData.get('business_name') as string;
+      const needs = formData.get('needs') as string;
+
+      const supabase = createClient();
       const { error } = await supabase
         .from('waitlist')
-        .insert([data]);
+        .insert([
+          { 
+            email,
+            business_name: businessName,
+            needs,
+            created_at: new Date().toISOString()
+          },
+        ]);
+
+      if (error) throw error;
       
-      if (error) {
-        console.error('Error submitting form:', error);
-        throw error;
-      }
-      
-      console.log('Form submitted successfully:', data);
       setIsSuccess(true);
       (event.target as HTMLFormElement).reset();
     } catch (error) {
       console.error('Error submitting form:', error);
+      alert('Failed to submit form. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
