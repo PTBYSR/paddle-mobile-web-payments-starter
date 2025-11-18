@@ -1,6 +1,5 @@
 import { XIcon } from "@/components/footer/icons";
 import Link from "next/link";
-import { useState, useRef, useEffect } from 'react';
 import { Volume2 } from "lucide-react";
 const socialLinks = [
   {

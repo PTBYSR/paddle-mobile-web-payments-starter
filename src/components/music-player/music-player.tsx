@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX, Volume, Volume1 } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
@@ -11,7 +11,7 @@ export function MusicPlayer() {
   const [volume, setVolume] = useState(50);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const volumeTimeoutRef = useRef<NodeJS.Timeout>();
+  const volumeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   // Update volume when it changes
   useEffect(() => {
@@ -74,13 +74,12 @@ export function MusicPlayer() {
   };
 
   // Don't render on server-side to prevent hydration issues
-  if (!isMounted) {
+  if (typeof window === 'undefined' || !isMounted) {
     return null;
   }
 
   const getVolumeIcon = () => {
     if (volume === 0) return <VolumeX className="h-5 w-5" />;
-    if (volume < 50) return <Volume className="h-5 w-5" />;
     return <Volume2 className="h-5 w-5" />;
   };
 

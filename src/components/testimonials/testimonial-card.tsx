@@ -1,4 +1,3 @@
-import { Star } from "@/components/showcase/star";
 import type { Testimonial } from "@/components/testimonials/testimonials";
 
 type Props = {

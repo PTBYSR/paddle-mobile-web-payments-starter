@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function WaitlistPage() {
@@ -55,7 +54,7 @@ export default function WaitlistPage() {
               <span className="text-white block">Sakura AI</span>
             </h1>
             <p className="max-w-lg ">
-              Be among the first to experience our AI-powered customer support solution. Join our waitlist today and we'll notify you when we launch.
+              Be among the first to experience our AI-powered customer support solution. Join our waitlist today and we&apos;ll notify you when we launch.
             </p>
             <div className="mt-auto">
               <Link href="/" className="inline-flex items-center gap-1.5 bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-blue-600 transition-colors w-fit">
