@@ -22,6 +22,22 @@ export function Hero() {
       <div className="relative z-10 w-full">
         <Nav />
       <div className="mt-16 flex flex-col items-center gap-6">
+        <div>
+          <a
+  href="https://www.producthunt.com/products/sakura-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-sakura-2"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1039821&theme=neutral&t=1763522088833"
+    alt="Sakura - AI customer support for solo business owners | Product Hunt"
+    width={250}
+    height={54}
+    style={{ width: 250, height: 54 }}
+  />
+</a>
+
+        </div>
         <Pill>
           <PillAvatarGroup className="hidden sm:flex">
             <PillAvatar src="/avatars/1.jpg" />
