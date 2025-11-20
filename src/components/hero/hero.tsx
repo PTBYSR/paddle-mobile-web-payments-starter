@@ -46,14 +46,14 @@ export function Hero() {
             <PillAvatar src="/avatars/4.jpg" />
           </PillAvatarGroup>
           <p className="text-muted-foreground px-2 text-xs font-medium sm:border-l-1 sm:text-sm">
-            Join <span className="text-foreground">businesses</span> already on board
+            Join <span className="text-foreground">solo entreprenuers</span> already on board
           </p>
         </Pill>
         <h1 className="text-center text-4xl leading-[1.1] font-medium tracking-tight sm:text-7xl">
-          Let AI handle your<span className="text-muted-foreground block">Customer support for you.</span>
+          Let AI reply your customer DMs<span className="text-muted-foreground block"> so you don’t have to.</span>
         </h1>
         <p className="max-w-lg text-center leading-6 tracking-tight sm:text-xl">
-          Sakura connects to your business apps—like WhatsApp and Instagram—and automatically replies to customer messages based on your own business rules and business guidelines.
+          Sakura connects to your business apps (e.g. WhatsApp, Instagram) and automatically replies to your customer messages for you.
         </p>
         <Button className="mb-10 w-fit" size="lg" asChild>
           <Link href="/waitlist">Get Started</Link>
