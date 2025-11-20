@@ -12,7 +12,7 @@ export function Quote({ text, author, role, className = '' }: QuoteProps) {
     <figure className={`mx-auto flex max-w-3xl flex-col items-center px-4 py-12 text-center ${className}`}>
       <blockquote className="text-3xl leading-[1.1] font-medium tracking-tighter text-balance md:text-5xl md:text-wrap">
         {typeof text === 'string' ? (
-          <span>"{text}"</span>
+          <span>&ldquo;{text}&rdquo;</span>
         ) : (
           text
         )}
