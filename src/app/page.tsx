@@ -10,6 +10,7 @@ import { Quote } from "@/components/quote/quote";
 import { HowItWorks } from "@/components/how-it-works/how-it-works";
 import { useRedirectWarning } from "@/lib/redirect";
 import { Contact } from "@/components/contact/contact";
+import { CTABanner } from "@/components/cta-banner";
 
 export default function Home() {
   useRedirectWarning();
@@ -33,6 +34,7 @@ export default function Home() {
           role="Co-founder of FryAI "
       />
       <Contact />
+      <CTABanner />
       <Footer />
     </>
   );
