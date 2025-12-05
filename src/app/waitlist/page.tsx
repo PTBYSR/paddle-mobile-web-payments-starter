@@ -172,11 +172,11 @@ export default function WaitlistPage() {
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                You're on the list!
+                You&apos;re on the list!
               </h1>
 
               <p className="text-lg text-gray-300 mb-10 max-w-lg">
-                Thanks for joining. We'll verify your details and get in touch with you shortly.
+                Thanks for joining. We&apos;ll verify your details and get in touch with you shortly.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
