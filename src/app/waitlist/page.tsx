@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Footer } from "@/components/footer/footer";
-import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import PhoneInput, { isValidPhoneNumber, Country } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 // Custom Card Component for Options
@@ -50,7 +50,7 @@ export default function WaitlistPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [country, setCountry] = useState('Detecting...');
-  const [countryCode, setCountryCode] = useState<any>('US');
+  const [countryCode, setCountryCode] = useState<Country>('US');
   const [role, setRole] = useState('');
   const [source, setSource] = useState('');
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
