@@ -177,7 +177,7 @@ export default function WaitlistPage() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen w-full relative flex flex-col">
+      <div className="min-h-screen w-full relative flex flex-col overflow-x-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 select-none">
           <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat opacity-40"></div>
@@ -246,7 +246,7 @@ export default function WaitlistPage() {
   }
 
   return (
-    <div className="min-h-screen w-full relative flex flex-col">
+    <div className="min-h-screen w-full relative flex flex-col overflow-x-hidden">
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 text-left select-none">
         <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat opacity-40"></div>
