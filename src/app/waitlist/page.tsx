@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Footer } from "@/components/footer/footer";
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 // Custom Card Component for Options
 const OptionCard = ({
@@ -48,8 +50,10 @@ export default function WaitlistPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [country, setCountry] = useState('Detecting...');
+  const [countryCode, setCountryCode] = useState<any>('US');
   const [role, setRole] = useState('');
   const [source, setSource] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
 
   // States for "Other" inputs
@@ -69,8 +73,13 @@ export default function WaitlistPage() {
         } else {
           setCountry('Unknown');
         }
+        if (data.country_code) {
+          setCountryCode(data.country_code);
+        }
       })
-      .catch(() => setCountry('Unknown'));
+      .catch(() => {
+        setCountry('Unknown');
+      });
 
     // Fetch waitlist count
     const fetchCount = async () => {
@@ -96,11 +105,25 @@ export default function WaitlistPage() {
       return;
     }
 
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('email') as string;
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Phone validation
+    if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
+      alert('Please enter a valid phone number');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData(event.currentTarget);
-
       const fullName = formData.get('full_name') as string;
       const dailyCustomers = formData.get('daily_customers') as string;
       const companyName = formData.get('company_name') as string;
@@ -123,6 +146,8 @@ export default function WaitlistPage() {
         .insert([
           {
             full_name: fullName,
+            email: email,
+            phone_number: phoneNumber,
             country: country,
             role: finalRole,
             daily_customers: dailyCustomers ? parseInt(dailyCustomers) : null,
@@ -140,6 +165,7 @@ export default function WaitlistPage() {
       setSource('');
       setRoleOther('');
       setSourceOther('');
+      setPhoneNumber(undefined);
       (event.target as HTMLFormElement).reset();
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -312,7 +338,36 @@ export default function WaitlistPage() {
                   </div>
 
                   <div className="space-y-1">
-                    <Label htmlFor="country" className="text-gray-300 text-sm font-medium ml-1 mb-2 block">Country</Label>
+                    <Label htmlFor="email" className="text-gray-300 text-sm font-medium ml-1 mb-2 block">Work Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="john@company.com"
+                      className="h-12 bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/50 rounded-xl"
+                      required
+                      disabled={isSubmitting}
+                    />
+                  </div>
+                </div>
+
+                {/* Contact Section */}
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="space-y-1">
+                    <Label htmlFor="phone" className="text-gray-300 text-sm font-medium ml-1 mb-2 block">Phone Number</Label>
+                    <div className="[&_.PhoneInputInput]:h-12 [&_.PhoneInputInput]:bg-white/5 [&_.PhoneInputInput]:border-[1.5px] [&_.PhoneInputInput]:border-white/10 [&_.PhoneInputInput]:text-white [&_.PhoneInputInput]:placeholder:text-gray-500 [&_.PhoneInputInput]:rounded-xl [&_.PhoneInputInput]:px-3 [&_.PhoneInputInput]:outline-none [&_.PhoneInputInput]:focus:ring-2 [&_.PhoneInputInput]:focus:ring-blue-500/50 [&_.PhoneInputCountryIcon]:w-8 [&_.PhoneInputCountryIcon]:h-6 [&_.PhoneInputCountrySelect]:bg-black [&_.PhoneInputCountrySelect]:text-white">
+                      <PhoneInput
+                        value={phoneNumber}
+                        onChange={setPhoneNumber}
+                        defaultCountry={countryCode}
+                        placeholder="Enter phone number"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <Label htmlFor="country" className="text-gray-300 text-sm font-medium ml-1 mb-2 block">Country (Auto-detected)</Label>
                     <div className="relative">
                       <Input
                         id="country"
