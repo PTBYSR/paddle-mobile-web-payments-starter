@@ -56,6 +56,13 @@ export default function WaitlistPage() {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null);
 
+  const [city, setCity] = useState('');
+  const [region, setRegion] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [timezone, setTimezone] = useState('');
+  const [isp, setIsp] = useState('');
+  const [ip, setIp] = useState('');
+
   // States for "Other" inputs
   const [roleOther, setRoleOther] = useState('');
   const [sourceOther, setSourceOther] = useState('');
@@ -64,7 +71,7 @@ export default function WaitlistPage() {
     setIsMounted(true);
     const supabase = createClient();
 
-    // Auto-detect country
+    // Auto-detect country and other details
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
@@ -76,6 +83,13 @@ export default function WaitlistPage() {
         if (data.country_code) {
           setCountryCode(data.country_code);
         }
+        // Set additional details
+        if (data.city) setCity(data.city);
+        if (data.region) setRegion(data.region);
+        if (data.postal) setZipCode(data.postal);
+        if (data.timezone) setTimezone(data.timezone);
+        if (data.org) setIsp(data.org);
+        if (data.ip) setIp(data.ip);
       })
       .catch(() => {
         setCountry('Unknown');
@@ -153,7 +167,14 @@ export default function WaitlistPage() {
             daily_customers: dailyCustomers ? parseInt(dailyCustomers) : null,
             company_name: companyName,
             source: finalSource,
-            created_at: new Date().toISOString()
+            created_at: new Date().toISOString(),
+            // Additional tracked fields
+            city: city,
+            region: region,
+            zip_code: zipCode,
+            timezone: timezone,
+            isp: isp,
+            ip_address: ip
           },
         ]);
 
