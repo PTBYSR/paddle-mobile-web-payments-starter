@@ -129,11 +129,11 @@ export default function WaitlistPage() {
       return;
     }
 
-    // Phone validation
-    if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
-      alert('Please enter a valid phone number');
-      return;
-    }
+    // Phone validation removed as per request
+    // if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
+    //   alert('Please enter a valid phone number');
+    //   return;
+    // }
 
     setIsSubmitting(true);
 
