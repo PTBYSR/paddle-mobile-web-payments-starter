@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Footer } from "@/components/footer/footer";
-import PhoneInput, { isValidPhoneNumber, Country } from 'react-phone-number-input';
+import PhoneInput, { Country } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
 // Custom Card Component for Options
