@@ -55,7 +55,7 @@ export async function submitWaitlist(formData: FormData) {
     const firstName = fullName.split(' ')[0];
     const { data, error: emailError } = await resend.emails.send({
       from: 'Sakura AI <hello@updates.sakurasupport.live>',
-      reply_to: 'paul.emechebe@sakurasupport.live', // Direct replies to your personal email
+      replyTo: 'paul.emechebe@sakurasupport.live', // Direct replies to your personal email
       to: email,
       subject: 'Welcome to the Sakura AI Waitlist!',
       html: `
