@@ -11,6 +11,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Footer } from "@/components/footer/footer";
 import PhoneInput, { Country } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { submitWaitlist } from "@/app/actions";
 
 // Custom Card Component for Options
 const OptionCard = ({
@@ -138,47 +139,37 @@ export default function WaitlistPage() {
     setIsSubmitting(true);
 
     try {
-      const fullName = formData.get('full_name') as string;
-      const dailyCustomers = formData.get('daily_customers') as string;
-      const companyName = formData.get('company_name') as string;
+      // Append state variables to FormData
+      if (phoneNumber) formData.set('phone_number', phoneNumber);
+      formData.set('country', country);
 
       // Handle Role
       let finalRole = role;
       if (role === 'Other') {
         finalRole = roleOther;
       }
+      formData.set('role', finalRole);
 
       // Handle Source
       let finalSource = source;
       if (source === 'Other') {
         finalSource = sourceOther;
       }
+      formData.set('source', finalSource);
 
-      const supabase = createClient();
-      const { error } = await supabase
-        .from('wait_list')
-        .insert([
-          {
-            full_name: fullName,
-            email: email,
-            phone_number: phoneNumber,
-            country: country,
-            role: finalRole,
-            daily_customers: dailyCustomers ? parseInt(dailyCustomers) : null,
-            company_name: companyName,
-            source: finalSource,
-            created_at: new Date().toISOString(),
-            // Additional tracked fields
-            city: city,
-            region: region,
-            zip_code: zipCode,
-            timezone: timezone,
-            isp: isp,
-            ip_address: ip
-          },
-        ]);
+      // Tracking fields
+      formData.set('city', city);
+      formData.set('region', region);
+      formData.set('zip_code', zipCode);
+      formData.set('timezone', timezone);
+      formData.set('isp', isp);
+      formData.set('ip_address', ip);
 
-      if (error) throw error;
+      const result = await submitWaitlist(formData);
+
+      if (!result.success) {
+        throw new Error(result.error);
+      }
 
       setIsSuccess(true);
       // Reset form
@@ -190,7 +181,7 @@ export default function WaitlistPage() {
       (event.target as HTMLFormElement).reset();
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Failed to submit form. Please try again.');
+      alert(error instanceof Error ? error.message : 'Failed to submit form');
     } finally {
       setIsSubmitting(false);
     }
